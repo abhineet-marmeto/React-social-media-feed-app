@@ -9,7 +9,11 @@ const PostCard = ({ post }) => {
   return (
     <div className="bg-white dark:bg-gray-800 p-4 rounded-lg shadow-md mb-4">
       <div className="flex items-center mb-2">
-        <img src={post.profileImage} alt="User" className="w-8 h-8 rounded-full mr-2" />
+        <img
+          src={post.profileImage || "/default-profile.png"}
+          alt="User"
+          className="w-8 h-8 rounded-full mr-2"
+        />
         <span className="font-semibold">{post.username}</span>
       </div>
       <p>{post.text}</p>

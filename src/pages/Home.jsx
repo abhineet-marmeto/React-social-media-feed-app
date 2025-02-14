@@ -54,13 +54,13 @@ const Home = () => {
   return (
     <div className="flex flex-col h-screen">
       {/* Fixed Header at the top */}
-      <div className="sticky top-0 z-10">
+      <div className="sticky top-0 z-10 h-[10vh]">
         <Header />
       </div>
 
       {/* Main Content */}
       <div className="flex flex-1 overflow-hidden">
-        <div className="flex-1 overflow-y-auto">
+        <div className="flex-1 overflow-hidden h-[90vh]">
           <PostList posts={paginatedPosts} />
           <Pagination />
           <PostCreator />

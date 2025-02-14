@@ -33,7 +33,7 @@ const PostCreator = () => {
   };
 
   return (
-    <div className="fixed bottom-0 left-0 w-full bg-white dark:bg-gray-900 p-4 border-t">
+    <div className="bottom-0 left-0 w-full bg-white dark:bg-gray-900 p-4 border-t">
       <textarea
         value={text}
         onChange={(e) => setText(e.target.value)}

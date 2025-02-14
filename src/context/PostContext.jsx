@@ -12,10 +12,7 @@ export const PostProvider = ({ children }) => {
   const postsPerPage = 10;
   const totalPages = Math.ceil(posts.length / postsPerPage);
 
-  // Dark Mode State
-  const [darkMode, setDarkMode] = useState(
-    localStorage.getItem("darkMode") === "true"
-  );
+  const [darkMode, setDarkMode] = useState(localStorage.getItem("darkMode") === "true");
 
   useEffect(() => {
     sessionStorage.setItem("posts", JSON.stringify(posts));
@@ -35,6 +32,15 @@ export const PostProvider = ({ children }) => {
     setDarkMode((prev) => !prev);
   };
 
+  const toggleLike = (postId) => {
+    const updatedPosts = posts.map((post) =>
+      post.id === postId
+        ? { ...post, liked: !post.liked, likes: post.liked ? post.likes - 1 : post.likes + 1 }
+        : post
+    );
+    setPosts(updatedPosts);
+  };
+
   return (
     <PostContext.Provider
       value={{
@@ -50,6 +56,7 @@ export const PostProvider = ({ children }) => {
         totalPages,
         darkMode,
         toggleDarkMode,
+        toggleLike,
       }}
     >
       {children}
