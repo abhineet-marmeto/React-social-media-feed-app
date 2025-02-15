@@ -19,14 +19,16 @@ const PostCreator = () => {
     if (text.trim()) {
       const hashtags = text.match(/#\w+/g) || [];
       const newPost = {
-        id: Date.now(),
+        id: Math.random().toString(36).substr(0, 1000),
         username,
         text,
         image,
         hashtags: hashtags.map((tag) => tag.slice(1)), // Remove #
         comments: [],
+        likes: 0,
+        liked: false,
       };
-      setPosts([newPost, ...posts]);
+      setPosts([newPost, ...posts]);   
       setText("");
       setImage(null);
     }
